@@ -15,7 +15,7 @@ Traditional cyclone intensity estimation relies heavily on subjective manual ima
 ## 🌟 Innovation & Uniqueness of the Solution
 
 * **Multi-Modal AI Architecture (Vision + LLM):** Bridges advanced Computer Vision (YOLOv8 + MobileNetV2 + ResNet-50) with Generative AI (LLMs), creating a complete sequence from raw satellite telemetry to natural language public advisories.
-* **Pre-Regression Spatial Gating:** Forces data through a YOLOv8 spatial detector to isolate and crop the eyewall before executing heavy regression math, guaranteeing hyper-localized, noise-free readings.
+* **Pre-Regression Spatial Gating:** Forces data through a strict multi-model gatekeeper system to isolate and crop the eyewall before executing heavy regression math, guaranteeing hyper-localized, noise-free readings.
 * **Explainable AI (XAI) for Mission-Critical Trust:** Live PyTorch attention hooks render thermal heatmaps over convective cloud structures, allowing meteorologists to visually verify exactly which atmospheric features drove the wind speed calculation.
 * **Zero-Middleware SACHET Integration:** Natively serializes LLM reports into OASIS CAP v1.2 XML payloads for automated, instant transmission directly to the NDMA SACHET emergency alert gateway.
 
@@ -23,9 +23,12 @@ Traditional cyclone intensity estimation relies heavily on subjective manual ima
 
 ## 🧠 AI & Deep Learning Architecture
 
-* **Ultralytics (YOLOv8):** The lightweight YOLOv8-nano (`yolov8n.pt`) model automatically calculates spatial bounding box coordinates to dynamically crop the cyclone's eyewall with contextual padding, and screens the initial upload for prohibited COCO objects.
-* **Torchvision (MobileNetV2 & ResNet-50):** MobileNetV2 acts as a secondary gatekeeper, performing a texture sanity check against standard terrestrial categories to filter out non-meteorological noise. The custom ResNet-50 regression model then computes continuous, precise maximum sustained wind speeds (knots) and central atmospheric pressure (hPa).
-* **Generative Advisory Engine (LLM):** Ingests calculated metrics to synthesize situational, multi-tier disaster response advisories.
+* **Ultralytics (YOLOv8) - The Primary Gatekeeper & Cropper:** The lightweight YOLOv8-nano (`yolov8n.pt`) performs two mandatory functions:
+  1. **Initial Object Detection:** It screens the uploaded image for standard COCO objects (like humans, vehicles, or regular landscapes) to immediately reject obvious non-satellite images.
+  2. **Eye Cropping:** Once confirmed as a valid image, it calculates the spatial bounding box coordinates to dynamically crop the cyclone's exact eyewall.
+* **Torchvision (MobileNetV2) - The Texture Scanner:** Before the cropped image can reach the main ResNet-50 model, MobileNetV2 acts as a secondary security gatekeeper. It scans the pixel distribution and cloud texture to verify the image is authentic meteorological satellite data and filters out adversarial noise.
+* **Torchvision (ResNet-50) - The Main Regression Engine:** Only validated, properly cropped cyclone images that pass *both* the YOLOv8 and MobileNetV2 filters are allowed to pass into this custom network. It computes the continuous, precise maximum sustained wind speeds (knots) and central atmospheric pressure (hPa).
+* **Generative Advisory Engine (LLM):** Ingests the calculated AI metrics to synthesize situational, multi-tier disaster response advisories.
 
 ---
 
