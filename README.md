@@ -1,4 +1,4 @@
-# Cyclone Intensity Prediction AI (Cyclone Core)
+# Cyclone Intensity Prediction AI 
 
 An automated, multi-modal machine learning platform designed to identify, analyze, and predict the intensity of tropical cyclones directly from raw multi-spectral satellite imagery. Engineered for the Smart India Hackathon (SIH), the system bridges deep learning computer vision with generative AI to output both numerical intensity forecasts and automated, standardized public warning advisories without manual intervention.
 
